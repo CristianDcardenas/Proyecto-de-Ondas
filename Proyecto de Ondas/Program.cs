@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Proyecto_de_Ondas;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -58,7 +57,7 @@ namespace Proyecto_de_Ondas
                 {
                     var callbackQuery = update.CallbackQuery;
                     var chatId = callbackQuery.Message.Chat.Id;
-                    var (response, keyboard) = WaveService.ProcessCallbackQuery(callbackQuery.Data); // Línea 63
+                    var (response, keyboard) = WaveService.ProcessCallbackQuery(callbackQuery.Data);
                     await botClient.SendTextMessageAsync(
                         chatId: chatId,
                         text: response,
@@ -66,7 +65,6 @@ namespace Proyecto_de_Ondas
                         replyMarkup: keyboard,
                         cancellationToken: cancellationToken
                     );
-                    // Eliminar el mensaje anterior para mantener el chat limpio
                     await botClient.DeleteMessageAsync(chatId, callbackQuery.Message.MessageId, cancellationToken);
                 }
             }
