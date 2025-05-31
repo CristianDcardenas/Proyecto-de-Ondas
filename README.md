@@ -1,85 +1,96 @@
-🌊 Proyecto de Ondas
+# 🌊 Proyecto de Ondas
 
-Proyecto de Ondas es un bot educativo de Telegram (@EspectroBot) diseñado para enseñar sobre ondas electromagnéticas de forma interactiva. Desarrollado en C# con .NET Framework 4.7.2, ofrece menús y submenús con información segmentada sobre definición, tipos, propiedades, ecuaciones, aplicaciones, polarización, propagación y espectro electromagnético. ¡Explora el fascinante mundo de las ondas con una experiencia de usuario intuitiva y botones con iconos personalizados! 📚📡⚙️
-📖 Descripción
-Este proyecto implementa un bot de Telegram que permite a los usuarios aprender sobre ondas electromagnéticas a través de un menú interactivo. Cada categoría (como Tipos o Propiedades) tiene submenús con secciones específicas (por ejemplo, Ondas de Radio, Frecuencia), accesibles mediante botones con emojis temáticos (📻, 🌈, ⚡). La información está organizada en fragmentos cortos para facilitar la comprensión, y la navegación incluye un botón "🔙 Volver al Menú" para regresar al menú principal.
-El bot se ejecuta como una aplicación de consola y utiliza la biblioteca Telegram.Bot v19.0.0 para interactuar con la API de Telegram. Es ideal para estudiantes, educadores o cualquier persona interesada en física y telecomunicaciones.
-✨ Características
+**Proyecto de Ondas** es un bot educativo de Telegram [@EspectroBot](https://t.me/EspectroBot) diseñado para enseñar de forma interactiva sobre **ondas electromagnéticas**. Desarrollado en **C# con .NET Framework 4.7.2**, ofrece un menú organizado con botones intuitivos y emojis personalizados para facilitar el aprendizaje de conceptos como definición, tipos, propiedades, ecuaciones, aplicaciones, polarización, propagación y el espectro electromagnético.
 
-Menú Interactivo: Explora 8 categorías principales con submenús detallados.
-Iconos Personalizados: Botones con emojis que reflejan el contenido (📝 para Ecuaciones, 🚀 para Aplicaciones).
-Información Segmentada: Contenido dividido en secciones cortas y específicas.
-Navegación Intuitiva: Botón "🔙 Volver al Menú" en cada submenú.
-Comandos: Soporta /start, /help, y /info para una experiencia completa.
-Limpieza de Chat: Elimina mensajes anteriores al responder callbacks.
-Consola: Ejecuta el bot desde una aplicación de consola sin interfaces gráficas.
+> 📚 ¡Explora el fascinante mundo de las ondas con una experiencia visual atractiva y navegación intuitiva!
 
-🚀 Instalación
-Sigue estos pasos para configurar y ejecutar el proyecto localmente.
-Prerrequisitos
+---
 
-.NET Framework 4.7.2
-Visual Studio 2019/2022 o Visual Studio Code
-Una cuenta de Telegram y un token de bot (obtén uno con @BotFather)
-Dependencias:
-Telegram.Bot v19.0.0
-Newtonsoft.Json v13.0.3
+## 📖 Descripción
 
+Este bot de Telegram guía a los usuarios a través de un menú interactivo, donde cada categoría (como `Tipos` o `Propiedades`) tiene submenús específicos (por ejemplo, `Ondas de Radio`, `Frecuencia`). El contenido está dividido en fragmentos breves para facilitar su comprensión, y cada sección incluye un botón **🔙 Volver al Menú** para regresar fácilmente al inicio.
 
+- 🧠 Ideal para estudiantes, docentes o cualquier persona interesada en física y telecomunicaciones.
+- 🧩 Ejecutado como una aplicación de consola.
+- 🤖 Basado en la biblioteca `Telegram.Bot v19.0.0`.
 
-Pasos
+---
 
-Clona el Repositorio
+## ✨ Características
+
+- 📂 **Menú interactivo** con 8 categorías temáticas.
+- 🎨 **Botones con iconos personalizados** (ej: 📝 Ecuaciones, 🚀 Aplicaciones).
+- 🧾 **Información segmentada** para facilitar la lectura.
+- 🔁 **Navegación fluida** con opción de volver al menú en cada submenú.
+- 🧵 **Soporte para comandos**: `/start`, `/help`, `/info`.
+- 🧹 **Limpieza automática del chat** al manejar respuestas de botones.
+- 🖥️ **Ejecución desde consola**, sin interfaz gráfica.
+
+---
+
+## 🚀 Instalación
+
+### 🔧 Prerrequisitos
+
+- .NET Framework 4.7.2
+- Visual Studio 2019/2022 o Visual Studio Code
+- Cuenta de Telegram y token de bot (obtenido desde [@BotFather](https://t.me/BotFather))
+- Dependencias:
+  - `Telegram.Bot v19.0.0`
+  - `Newtonsoft.Json v13.0.3`
+
+### 📦 Pasos
+
+1. **Clona el repositorio:**
+
+```bash
 git clone https://github.com/tu-usuario/proyecto-de-ondas.git
-cd proyecto-de-ondas
+cd Proyecto-de-Ondas
+```
 
+2. **Configura el token del bot:**
 
-Configura el Token del Bot
+Edita `BotConfig.cs` y reemplaza el valor del token:
 
-Abre BotConfig.cs y reemplaza el token con el tuyo, obtenido de @BotFather:
+```csharp
 public static readonly string BotToken = "TU_TOKEN_AQUÍ";
+```
 
+3. **Instala las dependencias (si usas terminal):**
 
-
-
-Instala las Dependencias
-Usa NuGet Package Manager en Visual Studio o ejecuta en la terminal:
+```bash
 dotnet add package Telegram.Bot --version 19.0.0
 dotnet add package Newtonsoft.Json --version 13.0.3
+```
 
+4. **Compila y ejecuta:**
 
-Compila y Ejecuta
+- Abre el proyecto en Visual Studio.
+- Presiona `Ctrl + Shift + B` para compilar.
+- Presiona `F5` para ejecutar.
 
-Abre el proyecto en Visual Studio.
-Compila la solución (Ctrl+Shift+B).
-Ejecuta el programa (F5); la consola mostrará: Bot iniciado. Presiona Enter para detenerlo....
+La consola mostrará: `Bot iniciado. Presiona Enter para detenerlo...`
 
+5. **Configura el texto “About” del bot (en Telegram):**
 
-Configura el Texto "About" en Telegram
+- Ve a [@BotFather](https://t.me/BotFather)
+- Comando `/mybots` > selecciona tu bot > `Edit Bot` > `Edit About`
+- Texto sugerido:
 
-Ve a @BotFather en Telegram.
-
-Usa /mybots, selecciona tu bot, luego Edit Bot > Edit About.
-
-Pega:
+```text
 🌊 Aprende sobre ondas electromagnéticas. ¡Menú interactivo! /start @EspectroBot
+```
 
+(Reemplaza `@EspectroBot` si tu bot tiene otro nombre)
 
-Reemplaza @EspectroBot con el nombre de tu bot si es diferente.
+---
 
+## 📚 Uso
 
+1. Abre Telegram y busca tu bot (ej: `@EspectroBot`)
+2. Envía `/start` para iniciar el menú principal:
 
-Prueba el Bot
-
-Abre Telegram, busca tu bot (por ejemplo, @EspectroBot), y envía /start.
-Explora los menús y submenús con los botones.
-
-
-
-📚 Uso
-
-Inicia el bot con /start para ver el menú principal:
-
+```
 📚 Definición
 📡 Tipos
 ⚙️ Propiedades
@@ -88,11 +99,11 @@ Inicia el bot con /start para ver el menú principal:
 🔄 Polarización
 🌐 Propagación
 📊 Espectro
+```
 
+3. Al seleccionar una categoría, se abre un submenú. Ejemplo de “Tipos”:
 
-Selecciona una categoría para acceder a su submenú. Por ejemplo, "Tipos" muestra:
-
-ℹ️ General
+```
 📻 Ondas de Radio
 🍽️ Microondas
 🔥 Infrarrojo
@@ -101,69 +112,94 @@ Selecciona una categoría para acceder a su submenú. Por ejemplo, "Tipos" muest
 🩻 Rayos X
 ☢️ Rayos Gamma
 🔙 Volver al Menú
+```
 
+4. Usa `/help` para ver los comandos disponibles y `/info` para más información.
 
-Usa /help para ver los comandos disponibles o /info para información sobre el bot.
+---
 
-Navega con los botones y regresa al menú principal con "🔙 Volver al Menú".
+## 🗂️ Estructura del Proyecto
 
-
-🗂️ Estructura del Proyecto
+```
 Proyecto_de_Ondas/
-├── BotConfig.cs         # Configuración del token del bot
-├── Program.cs           # Punto de entrada de la aplicación de consola
-├── WaveData.cs          # Respuestas y menús del bot
-├── WaveService.cs       # Lógica para procesar comandos y callbacks
-├── Proyecto_de_Ondas.csproj  # Archivo de proyecto
-└── README.md            # Documentación del proyecto
+├── BotConfig.cs         # Token del bot
+├── Program.cs           # Punto de entrada
+├── WaveData.cs          # Datos y menús del bot
+├── WaveService.cs       # Lógica del bot
+├── Proyecto_de_Ondas.csproj
+└── README.md            # Este archivo
+```
 
-🛠️ Dependencias
+---
 
-Telegram.Bot: v19.0.0 (NuGet)
-Newtonsoft.Json: v13.0.3 (NuGet)
-.NET Framework: 4.7.2
+## 🛠️ Dependencias
 
-🤝 Contribuir
-¡Las contribuciones son bienvenidas! Sigue estos pasos:
+- `Telegram.Bot` v19.0.0  
+- `Newtonsoft.Json` v13.0.3  
+- `.NET Framework` 4.7.2  
 
-Haz un fork del repositorio.
+---
 
-Crea una rama para tu cambio:
+## 🤝 Contribuir
+
+¡Las contribuciones son bienvenidas! ✨
+
+### Cómo hacerlo:
+
+1. Haz un **fork** del repositorio.
+2. Crea una nueva rama:
+
+```bash
 git checkout -b mi-nueva-funcionalidad
+```
 
+3. Realiza tus cambios y haz commit:
 
-Realiza tus cambios y haz commit:
+```bash
 git commit -m "Agrega nueva funcionalidad X"
+```
 
+4. Sube tus cambios:
 
-Sube los cambios a tu fork:
+```bash
 git push origin mi-nueva-funcionalidad
+```
 
+5. Abre un **Pull Request** con la descripción de tus cambios.
 
-Abre un Pull Request en GitHub con una descripción clara de tus cambios.
+### Ideas para contribuir:
 
+- Agregar nuevas secciones al bot (ej. ejemplos prácticos).
+- Mejorar o traducir los textos.
+- Agregar más emojis o reorganizar el menú.
+- Implementar pruebas unitarias.
 
-Ideas para Contribuir
+---
 
-Agregar nuevas secciones al bot (por ejemplo, ejemplos prácticos).
-Mejorar los textos de las respuestas o traducir a otros idiomas.
-Optimizar la navegación o agregar más iconos.
-Implementar pruebas unitarias.
+## 🐛 Reportar errores
 
-🐛 Reportar Errores
-Si encuentras un problema, abre un issue en GitHub con:
+Si encuentras un error:
 
-Descripción del error.
-Pasos para reproducirlo.
-Capturas de pantalla (si aplica).
-Mensajes de error de la consola.
+- Abre un **issue** en GitHub con:
+  - Descripción del problema
+  - Pasos para reproducirlo
+  - Capturas de pantalla (si aplica)
+  - Mensajes de error
 
-📜 Licencia
-Este proyecto está bajo la Licencia MIT. Siéntete libre de usarlo, modificarlo y distribuirlo.
-📬 Contacto
+---
 
-Creador: [Tu Nombre o Alias] (coloca tu contacto, por ejemplo, correo o Telegram)
-Bot: @EspectroBot (prueba el bot en Telegram)
+## 📜 Licencia
 
+Este proyecto está bajo la **Licencia MIT**.  
+Puedes usarlo, modificarlo y distribuirlo libremente.
 
-🌊 ¡Aprende sobre ondas electromagnéticas con @EspectroBot!
+---
+
+## 📬 Contacto
+
+- **Creador**: [Tu Nombre o Alias]  
+- **Telegram**: [@EspectroBot](https://t.me/EspectroBot)
+
+---
+
+> 🌊 Aprende sobre ondas electromagnéticas con [@EspectroBot](https://t.me/EspectroBot)
