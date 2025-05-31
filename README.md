@@ -197,9 +197,9 @@ Puedes usarlo, modificarlo y distribuirlo libremente.
 
 ## 📬 Contacto
 
-- **Creador**: [Tu Nombre o Alias]  
-- **Telegram**: [@EspectroBot](https://t.me/EspectroBot)
+- **Creador**: [Cristian Cardenas]  
+- **Telegram**: [@Wv3s_Bot](https://t.me/EspectroBot)
 
 ---
 
-> 🌊 Aprende sobre ondas electromagnéticas con [@EspectroBot](https://t.me/EspectroBot)
+> 🌊 Aprende sobre ondas electromagnéticas con [@Wv3s_Bot](https://t.me/EspectroBot)
