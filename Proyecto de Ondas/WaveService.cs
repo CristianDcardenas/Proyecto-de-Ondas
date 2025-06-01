@@ -1,163 +1,124 @@
-﻿using Telegram.Bot.Types.ReplyMarkups;
+﻿using System;
+using System.Collections.Generic;
+using Telegram.Bot.Types.ReplyMarkups;
 
 namespace Proyecto_de_Ondas
 {
     public class WaveService
     {
+        private readonly Dictionary<string, Func<(string response, InlineKeyboardMarkup keyboard)>> _commandHandlers;
+        private readonly Dictionary<string, Func<(string response, InlineKeyboardMarkup keyboard)>> _callbackHandlers;
+
+        public WaveService()
+        {
+            _commandHandlers = new Dictionary<string, Func<(string response, InlineKeyboardMarkup keyboard)>>
+            {
+                ["/start"] = () => (WaveData.Responses.WelcomeMessage, WaveData.GetMainMenu()),
+                ["/help"] = () => (WaveData.Responses.HelpMessage, WaveData.GetMainMenu()),
+                ["/info"] = () => (WaveData.Responses.InfoMessage, WaveData.GetMainMenu())
+            };
+
+            _callbackHandlers = new Dictionary<string, Func<(string response, InlineKeyboardMarkup keyboard)>>
+            {
+                // Menús principales  
+                ["main_menu"] = () => (WaveData.Responses.WelcomeMessage, WaveData.GetMainMenu()),
+                ["definition_menu"] = () => ("📚 *Definición*\nSelecciona una opción:", WaveData.GetDefinitionSubMenu()),
+                ["types_menu"] = () => ("📡 *Tipos*\nSelecciona una opción:", WaveData.GetTypesSubMenu()),
+                ["properties_menu"] = () => ("⚙️ *Propiedades*\nSelecciona una opción:", WaveData.GetPropertiesSubMenu()),
+                ["equations_menu"] = () => ("📝 *Ecuaciones*\nSelecciona una opción:", WaveData.GetEquationsSubMenu()),
+                ["applications_menu"] = () => ("🚀 *Aplicaciones*\nSelecciona una opción:", WaveData.GetApplicationsSubMenu()),
+                ["polarization_menu"] = () => ("🔄 *Polarización*\nSelecciona una opción:", WaveData.GetPolarizationSubMenu()),
+                ["propagation_menu"] = () => ("🌐 *Propagación*\nSelecciona una opción:", WaveData.GetPropagationSubMenu()),
+                ["spectrum_menu"] = () => ("📊 *Espectro*\nSelecciona una opción:", WaveData.GetSpectrumSubMenu()),
+
+                // Definición  
+                ["definition_overview"] = () => (WaveData.Responses.Definition_Overview, WaveData.GetDefinitionSubMenu()),
+                ["definition_history"] = () => (WaveData.Responses.Definition_History, WaveData.GetDefinitionSubMenu()),
+                ["definition_characteristics"] = () => (WaveData.Responses.Definition_Characteristics, WaveData.GetDefinitionSubMenu()),
+
+                // Tipos  
+                ["types_overview"] = () => (WaveData.Responses.Types_Overview, WaveData.GetTypesSubMenu()),
+                ["types_radio"] = () => (WaveData.Responses.Types_RadioWaves, WaveData.GetTypesSubMenu()),
+                ["types_microwaves"] = () => (WaveData.Responses.Types_Microwaves, WaveData.GetTypesSubMenu()),
+                ["types_infrared"] = () => (WaveData.Responses.Types_Infrared, WaveData.GetTypesSubMenu()),
+                ["types_visible"] = () => (WaveData.Responses.Types_VisibleLight, WaveData.GetTypesSubMenu()),
+                ["types_ultraviolet"] = () => (WaveData.Responses.Types_Ultraviolet, WaveData.GetTypesSubMenu()),
+                ["types_xrays"] = () => (WaveData.Responses.Types_XRays, WaveData.GetTypesSubMenu()),
+                ["types_gamma"] = () => (WaveData.Responses.Types_GammaRays, WaveData.GetTypesSubMenu()),
+
+                // Propiedades  
+                ["properties_overview"] = () => (WaveData.Responses.Properties_Overview, WaveData.GetPropertiesSubMenu()),
+                ["properties_frequency"] = () => (WaveData.Responses.Properties_Frequency, WaveData.GetPropertiesSubMenu()),
+                ["properties_wavelength"] = () => (WaveData.Responses.Properties_Wavelength, WaveData.GetPropertiesSubMenu()),
+                ["properties_speed"] = () => (WaveData.Responses.Properties_Speed, WaveData.GetPropertiesSubMenu()),
+                ["properties_energy"] = () => (WaveData.Responses.Properties_Energy, WaveData.GetPropertiesSubMenu()),
+                ["properties_amplitude"] = () => (WaveData.Responses.Properties_Amplitude, WaveData.GetPropertiesSubMenu()),
+                ["properties_transversal"] = () => (WaveData.Responses.Properties_Transversal, WaveData.GetPropertiesSubMenu()),
+                ["properties_vacuum"] = () => (WaveData.Responses.Properties_Vacuum, WaveData.GetPropertiesSubMenu()),
+
+                // Ecuaciones  
+                ["equations_overview"] = () => (WaveData.Responses.Equations_Overview, WaveData.GetEquationsSubMenu()),
+                ["equations_speed"] = () => (WaveData.Responses.Equations_Speed, WaveData.GetEquationsSubMenu()),
+                ["equations_energy"] = () => (WaveData.Responses.Equations_Energy, WaveData.GetEquationsSubMenu()),
+                ["equations_maxwell"] = () => (WaveData.Responses.Equations_Maxwell, WaveData.GetEquationsSubMenu()),
+
+                // Aplicaciones  
+                ["applications_overview"] = () => (WaveData.Responses.Applications_Overview, WaveData.GetApplicationsSubMenu()),
+                ["applications_radio"] = () => (WaveData.Responses.Applications_RadioWaves, WaveData.GetApplicationsSubMenu()),
+                ["applications_microwaves"] = () => (WaveData.Responses.Applications_Microwaves, WaveData.GetApplicationsSubMenu()),
+                ["applications_infrared"] = () => (WaveData.Responses.Applications_Infrared, WaveData.GetApplicationsSubMenu()),
+                ["applications_visible"] = () => (WaveData.Responses.Applications_VisibleLight, WaveData.GetApplicationsSubMenu()),
+                ["applications_ultraviolet"] = () => (WaveData.Responses.Applications_Ultraviolet, WaveData.GetApplicationsSubMenu()),
+                ["applications_xrays"] = () => (WaveData.Responses.Applications_XRays, WaveData.GetApplicationsSubMenu()),
+                ["applications_gamma"] = () => (WaveData.Responses.Applications_GammaRays, WaveData.GetApplicationsSubMenu()),
+
+                // Polarización  
+                ["polarization_overview"] = () => (WaveData.Responses.Polarization_Overview, WaveData.GetPolarizationSubMenu()),
+                ["polarization_linear"] = () => (WaveData.Responses.Polarization_Linear, WaveData.GetPolarizationSubMenu()),
+                ["polarization_circular"] = () => (WaveData.Responses.Polarization_Circular, WaveData.GetPolarizationSubMenu()),
+                ["polarization_elliptical"] = () => (WaveData.Responses.Polarization_Elliptical, WaveData.GetPolarizationSubMenu()),
+
+                // Propagación  
+                ["propagation_overview"] = () => (WaveData.Responses.Propagation_Overview, WaveData.GetPropagationSubMenu()),
+                ["propagation_vacuum"] = () => (WaveData.Responses.Propagation_Vacuum, WaveData.GetPropagationSubMenu()),
+                ["propagation_air"] = () => (WaveData.Responses.Propagation_Air, WaveData.GetPropagationSubMenu()),
+                ["propagation_materials"] = () => (WaveData.Responses.Propagation_Materials, WaveData.GetPropagationSubMenu()),
+                ["propagation_phenomena"] = () => (WaveData.Responses.Propagation_Phenomena, WaveData.GetPropagationSubMenu()),
+
+                // Espectro  
+                ["spectrum_overview"] = () => (WaveData.Responses.Spectrum_Overview, WaveData.GetSpectrumSubMenu()),
+                ["spectrum_radio"] = () => (WaveData.Responses.Spectrum_RadioWaves, WaveData.GetSpectrumSubMenu()),
+                ["spectrum_microwaves"] = () => (WaveData.Responses.Spectrum_Microwaves, WaveData.GetSpectrumSubMenu()),
+                ["spectrum_infrared"] = () => (WaveData.Responses.Spectrum_Infrared, WaveData.GetSpectrumSubMenu()),
+                ["spectrum_visible"] = () => (WaveData.Responses.Spectrum_VisibleLight, WaveData.GetSpectrumSubMenu()),
+                ["spectrum_ultraviolet"] = () => (WaveData.Responses.Spectrum_Ultraviolet, WaveData.GetSpectrumSubMenu()),
+                ["spectrum_xrays"] = () => (WaveData.Responses.Spectrum_XRays, WaveData.GetSpectrumSubMenu()),
+                ["spectrum_gamma"] = () => (WaveData.Responses.Spectrum_GammaRays, WaveData.GetSpectrumSubMenu())
+            };
+        }
+
         public (string response, InlineKeyboardMarkup keyboard) ProcessCommand(string command)
         {
-            switch (command.ToLower())
-            {
-                case "/start":
-                    return (WaveData.Responses.WelcomeMessage, WaveData.GetMainMenu());
-                case "/help":
-                    return (WaveData.Responses.HelpMessage, WaveData.GetMainMenu());
-                case "/info":
-                    return (WaveData.Responses.InfoMessage, WaveData.GetMainMenu());
-                default:
-                    return (WaveData.Responses.UnknownCommand, WaveData.GetMainMenu());
-            }
+            if (string.IsNullOrWhiteSpace(command))
+                return (WaveData.Responses.UnknownCommand, WaveData.GetMainMenu());
+
+            var normalizedCommand = command.ToLower().Trim();
+
+            if (_commandHandlers.TryGetValue(normalizedCommand, out var handler))
+                return handler();
+
+            return (WaveData.Responses.UnknownCommand, WaveData.GetMainMenu());
         }
 
         public (string response, InlineKeyboardMarkup keyboard) ProcessCallbackQuery(string callbackData)
         {
-            switch (callbackData)
-            {
-                // Menús
-                case "main_menu":
-                    return (WaveData.Responses.WelcomeMessage, WaveData.GetMainMenu());
-                case "definition_menu":
-                    return ("📚 *Definición*\nSelecciona una opción:", WaveData.GetDefinitionSubMenu());
-                case "types_menu":
-                    return ("📡 *Tipos*\nSelecciona una opción:", WaveData.GetTypesSubMenu());
-                case "properties_menu":
-                    return ("⚙️ *Propiedades*\nSelecciona una opción:", WaveData.GetPropertiesSubMenu());
-                case "equations_menu":
-                    return ("📝 *Ecuaciones*\nSelecciona una opción:", WaveData.GetEquationsSubMenu());
-                case "applications_menu":
-                    return ("🚀 *Aplicaciones*\nSelecciona una opción:", WaveData.GetApplicationsSubMenu());
-                case "polarization_menu":
-                    return ("🔄 *Polarización*\nSelecciona una opción:", WaveData.GetPolarizationSubMenu());
-                case "propagation_menu":
-                    return ("🌐 *Propagación*\nSelecciona una opción:", WaveData.GetPropagationSubMenu());
-                case "spectrum_menu":
-                    return ("📊 *Espectro*\nSelecciona una opción:", WaveData.GetSpectrumSubMenu());
+            if (string.IsNullOrWhiteSpace(callbackData))
+                return (WaveData.Responses.UnknownCommand, WaveData.GetMainMenu());
 
-                // Definición
-                case "definition_overview":
-                    return (WaveData.Responses.Definition_Overview, WaveData.GetDefinitionSubMenu());
-                case "definition_history":
-                    return (WaveData.Responses.Definition_History, WaveData.GetDefinitionSubMenu());
-                case "definition_characteristics":
-                    return (WaveData.Responses.Definition_Characteristics, WaveData.GetDefinitionSubMenu());
+            if (_callbackHandlers.TryGetValue(callbackData, out var handler))
+                return handler();
 
-                // Tipos
-                case "types_overview":
-                    return (WaveData.Responses.Types_Overview, WaveData.GetTypesSubMenu());
-                case "types_radio":
-                    return (WaveData.Responses.Types_RadioWaves, WaveData.GetTypesSubMenu());
-                case "types_microwaves":
-                    return (WaveData.Responses.Types_Microwaves, WaveData.GetTypesSubMenu());
-                case "types_infrared":
-                    return (WaveData.Responses.Types_Infrared, WaveData.GetTypesSubMenu());
-                case "types_visible":
-                    return (WaveData.Responses.Types_VisibleLight, WaveData.GetTypesSubMenu());
-                case "types_ultraviolet":
-                    return (WaveData.Responses.Types_Ultraviolet, WaveData.GetTypesSubMenu());
-                case "types_xrays":
-                    return (WaveData.Responses.Types_XRays, WaveData.GetTypesSubMenu());
-                case "types_gamma":
-                    return (WaveData.Responses.Types_GammaRays, WaveData.GetTypesSubMenu());
-
-                // Propiedades
-                case "properties_overview":
-                    return (WaveData.Responses.Properties_Overview, WaveData.GetPropertiesSubMenu());
-                case "properties_frequency":
-                    return (WaveData.Responses.Properties_Frequency, WaveData.GetPropertiesSubMenu());
-                case "properties_wavelength":
-                    return (WaveData.Responses.Properties_Wavelength, WaveData.GetPropertiesSubMenu());
-                case "properties_speed":
-                    return (WaveData.Responses.Properties_Speed, WaveData.GetPropertiesSubMenu());
-                case "properties_energy":
-                    return (WaveData.Responses.Properties_Energy, WaveData.GetPropertiesSubMenu());
-                case "properties_amplitude":
-                    return (WaveData.Responses.Properties_Amplitude, WaveData.GetPropertiesSubMenu());
-                case "properties_transversal":
-                    return (WaveData.Responses.Properties_Transversal, WaveData.GetPropertiesSubMenu());
-                case "properties_vacuum":
-                    return (WaveData.Responses.Properties_Vacuum, WaveData.GetPropertiesSubMenu());
-
-                // Ecuaciones
-                case "equations_overview":
-                    return (WaveData.Responses.Equations_Overview, WaveData.GetEquationsSubMenu());
-                case "equations_speed":
-                    return (WaveData.Responses.Equations_Speed, WaveData.GetEquationsSubMenu());
-                case "equations_energy":
-                    return (WaveData.Responses.Equations_Energy, WaveData.GetEquationsSubMenu());
-                case "equations_maxwell":
-                    return (WaveData.Responses.Equations_Maxwell, WaveData.GetEquationsSubMenu());
-
-                // Aplicaciones
-                case "applications_overview":
-                    return (WaveData.Responses.Applications_Overview, WaveData.GetApplicationsSubMenu());
-                case "applications_radio":
-                    return (WaveData.Responses.Applications_RadioWaves, WaveData.GetApplicationsSubMenu());
-                case "applications_microwaves":
-                    return (WaveData.Responses.Applications_Microwaves, WaveData.GetApplicationsSubMenu());
-                case "applications_infrared":
-                    return (WaveData.Responses.Applications_Infrared, WaveData.GetApplicationsSubMenu());
-                case "applications_visible":
-                    return (WaveData.Responses.Applications_VisibleLight, WaveData.GetApplicationsSubMenu());
-                case "applications_ultraviolet":
-                    return (WaveData.Responses.Applications_Ultraviolet, WaveData.GetApplicationsSubMenu());
-                case "applications_xrays":
-                    return (WaveData.Responses.Applications_XRays, WaveData.GetApplicationsSubMenu());
-                case "applications_gamma":
-                    return (WaveData.Responses.Applications_GammaRays, WaveData.GetApplicationsSubMenu());
-
-                // Polarización
-                case "polarization_overview":
-                    return (WaveData.Responses.Polarization_Overview, WaveData.GetPolarizationSubMenu());
-                case "polarization_linear":
-                    return (WaveData.Responses.Polarization_Linear, WaveData.GetPolarizationSubMenu());
-                case "polarization_circular":
-                    return (WaveData.Responses.Polarization_Circular, WaveData.GetPolarizationSubMenu());
-                case "polarization_elliptical":
-                    return (WaveData.Responses.Polarization_Elliptical, WaveData.GetPolarizationSubMenu());
-
-                // Propagación
-                case "propagation_overview":
-                    return (WaveData.Responses.Propagation_Overview, WaveData.GetPropagationSubMenu());
-                case "propagation_vacuum":
-                    return (WaveData.Responses.Propagation_Vacuum, WaveData.GetPropagationSubMenu());
-                case "propagation_air":
-                    return (WaveData.Responses.Propagation_Air, WaveData.GetPropagationSubMenu());
-                case "propagation_materials":
-                    return (WaveData.Responses.Propagation_Materials, WaveData.GetPropagationSubMenu());
-                case "propagation_phenomena":
-                    return (WaveData.Responses.Propagation_Phenomena, WaveData.GetPropagationSubMenu());
-
-                // Espectro
-                case "spectrum_overview":
-                    return (WaveData.Responses.Spectrum_Overview, WaveData.GetSpectrumSubMenu());
-                case "spectrum_radio":
-                    return (WaveData.Responses.Spectrum_RadioWaves, WaveData.GetSpectrumSubMenu());
-                case "spectrum_microwaves":
-                    return (WaveData.Responses.Spectrum_Microwaves, WaveData.GetSpectrumSubMenu());
-                case "spectrum_infrared":
-                    return (WaveData.Responses.Spectrum_Infrared, WaveData.GetSpectrumSubMenu());
-                case "spectrum_visible":
-                    return (WaveData.Responses.Spectrum_VisibleLight, WaveData.GetSpectrumSubMenu());
-                case "spectrum_ultraviolet":
-                    return (WaveData.Responses.Spectrum_Ultraviolet, WaveData.GetSpectrumSubMenu());
-                case "spectrum_xrays":
-                    return (WaveData.Responses.Spectrum_XRays, WaveData.GetSpectrumSubMenu());
-                case "spectrum_gamma":
-                    return (WaveData.Responses.Spectrum_GammaRays, WaveData.GetSpectrumSubMenu());
-
-                default:
-                    return (WaveData.Responses.UnknownCommand, WaveData.GetMainMenu());
-            }
+            return (WaveData.Responses.UnknownCommand, WaveData.GetMainMenu());
         }
     }
 }
