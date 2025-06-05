@@ -38,13 +38,13 @@ namespace Proyecto_de_Ondas
 
                 // Tipos  
                 ["types_overview"] = () => (WaveData.Responses.Types_Overview, WaveData.GetTypesSubMenu(), null),
-                ["types_radio"] = () => (WaveData.Responses.Types_RadioWaves, WaveData.GetTypesSubMenu(), "https://www.google.com/imgres?q=Ondas%20de%20radio&imgurl=https%3A%2F%2Fdefinicion.de%2Fwp-content%2Fuploads%2F2024%2F04%2Fondas-de-radio.jpg&imgrefurl=https%3A%2F%2Fdefinicion.de%2Fondas-de-radio%2F&docid=x737c82ESFK4GM&tbnid=gO2vMJZhUH_owM&vet=12ahUKEwjp4aDtl9mNAxVPn4QIHb1_G7kQM3oECG8QAA..i&w=1280&h=824&hcb=2&ved=2ahUKEwjp4aDtl9mNAxVPn4QIHb1_G7kQM3oECG8QAA"),
-                ["types_microwaves"] = () => (WaveData.Responses.Types_Microwaves, WaveData.GetTypesSubMenu(), "https://example.com/images/microwaves.jpg"),
-                ["types_infrared"] = () => (WaveData.Responses.Types_Infrared, WaveData.GetTypesSubMenu(), "https://www.google.com/imgres?q=radiacion%20infrarroja&imgurl=https%3A%2F%2Fwww.redalyc.org%2Fjournal%2F920%2F92046968008%2F92046968008_gf2.png&imgrefurl=https%3A%2F%2Fwww.redalyc.org%2Fjournal%2F920%2F92046968008%2Fhtml%2F&docid=Md-bCMyso5jE4M&tbnid=6ya4AnzWcvZcBM&vet=12ahUKEwiG1PWFmdmNAxV1TTABHcSeKCAQM3oECCAQAA..i&w=506&h=262&hcb=2&ved=2ahUKEwiG1PWFmdmNAxV1TTABHcSeKCAQM3oECCAQAA"),
-                ["types_visible"] = () => (WaveData.Responses.Types_VisibleLight, WaveData.GetTypesSubMenu(), "https://example.com/images/visible_light.jpg"),
-                ["types_ultraviolet"] = () => (WaveData.Responses.Types_Ultraviolet, WaveData.GetTypesSubMenu(), "https://example.com/images/ultraviolet.jpg"),
-                ["types_xrays"] = () => (WaveData.Responses.Types_XRays, WaveData.GetTypesSubMenu(), "https://example.com/images/xrays.jpg"),
-                ["types_gamma"] = () => (WaveData.Responses.Types_GammaRays, WaveData.GetTypesSubMenu(), "https://example.com/images/gamma_rays.jpg"),
+                ["types_radio"] = () => (WaveData.Responses.Types_RadioWaves, WaveData.GetTypesSubMenu(), "https://definicion.de/wp-content/uploads/2024/04/ondas-de-radio.jpg"),
+                ["types_microwaves"] = () => (WaveData.Responses.Types_Microwaves, WaveData.GetTypesSubMenu(), "https://www.revista.unam.mx/wp-content/uploads/3_interaccion_entre_microondas_y_moleculas.png"),
+                ["types_infrared"] = () => (WaveData.Responses.Types_Infrared, WaveData.GetTypesSubMenu(), "https://www.redalyc.org/journal/920/92046968008/92046968008_gf2.png"),
+                ["types_visible"] = () => (WaveData.Responses.Types_VisibleLight, WaveData.GetTypesSubMenu(), "https://educacionplasticayvisual.com/wp-content/uploads/espectro-luz-visible-prisma-plastica.jpg"),
+                ["types_ultraviolet"] = () => (WaveData.Responses.Types_Ultraviolet, WaveData.GetTypesSubMenu(), "http://www.elisaribau.com/wp-content/uploads/2018/05/rayos-ultravioleta.jpg"),
+                ["types_xrays"] = () => (WaveData.Responses.Types_XRays, WaveData.GetTypesSubMenu(), "https://medlineplus.gov/images/Xray_share.jpg"),
+                ["types_gamma"] = () => (WaveData.Responses.Types_GammaRays, WaveData.GetTypesSubMenu(), "https://images.theconversation.com/files/559347/original/file-20231114-23-6sofq7.jpg"),
 
                 // Propiedades  
                 ["properties_overview"] = () => (WaveData.Responses.Properties_Overview, WaveData.GetPropertiesSubMenu(), null),
@@ -64,36 +64,36 @@ namespace Proyecto_de_Ondas
 
                 // Aplicaciones  
                 ["applications_overview"] = () => (WaveData.Responses.Applications_Overview, WaveData.GetApplicationsSubMenu(), null),
-                ["applications_radio"] = () => (WaveData.Responses.Applications_RadioWaves, WaveData.GetApplicationsSubMenu(), "https://example.com/images/radio_applications.jpg"),
-                ["applications_microwaves"] = () => (WaveData.Responses.Applications_Microwaves, WaveData.GetApplicationsSubMenu(), "https://example.com/images/microwave_applications.jpg"),
-                ["applications_infrared"] = () => (WaveData.Responses.Applications_Infrared, WaveData.GetApplicationsSubMenu(), "https://example.com/images/infrared_applications.jpg"),
-                ["applications_visible"] = () => (WaveData.Responses.Applications_VisibleLight, WaveData.GetApplicationsSubMenu(), "https://example.com/images/visible_applications.jpg"),
-                ["applications_ultraviolet"] = () => (WaveData.Responses.Applications_Ultraviolet, WaveData.GetApplicationsSubMenu(), "https://example.com/images/ultraviolet_applications.jpg"),
-                ["applications_xrays"] = () => (WaveData.Responses.Applications_XRays, WaveData.GetApplicationsSubMenu(), "https://example.com/images/xray_applications.jpg"),
-                ["applications_gamma"] = () => (WaveData.Responses.Applications_GammaRays, WaveData.GetApplicationsSubMenu(), "https://example.com/images/gamma_applications.jpg"),
+                ["applications_radio"] = () => (WaveData.Responses.Applications_RadioWaves, WaveData.GetApplicationsSubMenu(), "https://www.google.com/imgres?q=tecnologias%20inalambricas&imgurl=https%3A%2F%2Fwww.quonty.com%2Fblog%2Fwp-content%2Fuploads%2F2018%2F02%2Fmoviles-ordenadores-baratos-130.jpg&imgrefurl=https%3A%2F%2Fwww.quonty.com%2Fblog%2Ftecnologia-inalambrica%2F&docid=tr1zodSNyzbbpM&tbnid=DzXfAwfv8RwnxM&vet=12ahUKEwiY35aIrdmNAxWsmYQIHYhMMukQM3oECGYQAA..i&w=600&h=400&hcb=2&ved=2ahUKEwiY35aIrdmNAxWsmYQIHYhMMukQM3oECGYQAA"),
+                ["applications_microwaves"] = () => (WaveData.Responses.Applications_Microwaves, WaveData.GetApplicationsSubMenu(), "https://www.google.com/imgres?q=microondas&imgurl=https%3A%2F%2Fhttp2.mlstatic.com%2FD_NQ_736824-MLA69192115939_052023-OO.jpg&imgrefurl=https%3A%2F%2Fwww.mercadolibre.com.co%2Fblog%2Ftr%2Fcuales-son-las-medidas-de-un-microondas-y-como-elegir-el-tuyo&docid=L86SbiWZ7XJ0SM&tbnid=4mVv-rhCJ34ToM&vet=12ahUKEwigpoC1rdmNAxUQSTABHZdmDR0QM3oECB4QAA..i&w=1920&h=1280&hcb=2&ved=2ahUKEwigpoC1rdmNAxUQSTABHZdmDR0QM3oECB4QAA"),
+                ["applications_infrared"] = () => (WaveData.Responses.Applications_Infrared, WaveData.GetApplicationsSubMenu(), "https://www.google.com/imgres?q=termograf%C3%ADa%20mediaca&imgurl=https%3A%2F%2Fstatic.wixstatic.com%2Fmedia%2Fbc8fb4_77bc9f5867134aa1b5f7e156c6781a9d~mv2.jpg%2Fv1%2Ffill%2Fw_640%2Ch_298%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto%2Fbc8fb4_77bc9f5867134aa1b5f7e156c6781a9d~mv2.jpg&imgrefurl=https%3A%2F%2Fwww.draleilagonzaga.com%2Fcopia-polissonografia&docid=o597ANFk_Rz15M&tbnid=8g5MLHHTIDbuxM&vet=12ahUKEwiI_9HzrdmNAxU0STABHWsWO-MQM3oFCIABEAA..i&w=640&h=298&hcb=2&ved=2ahUKEwiI_9HzrdmNAxU0STABHWsWO-MQM3oFCIABEAA"),
+                ["applications_visible"] = () => (WaveData.Responses.Applications_VisibleLight, WaveData.GetApplicationsSubMenu(), "https://www.google.com/imgres?q=Pantallas&imgurl=https%3A%2F%2Fi0.wp.com%2Ffolou.co%2Fwp-content%2Fuploads%2F2022%2F04%2FPANTALLA-LCD-DICCIONARIO-FOLOU.jpg%3Ffit%3D1200%252C675%26ssl%3D1&imgrefurl=https%3A%2F%2Ffolou.co%2Fdispositivos%2Fpantalla-lcd%2F&docid=V4i8cKHQPRh2MM&tbnid=bhlQzQIYfuJDLM&vet=12ahUKEwjLi86vrtmNAxVzFlkFHQOjHysQM3oECEgQAA..i&w=1200&h=675&hcb=2&ved=2ahUKEwjLi86vrtmNAxVzFlkFHQOjHysQM3oECEgQAA"),
+                ["applications_ultraviolet"] = () => (WaveData.Responses.Applications_Ultraviolet, WaveData.GetApplicationsSubMenu(), "https://www.google.com/imgres?q=analisis%20forense%20luz%20ultravioleta&imgurl=https%3A%2F%2Fwww.iluminet.com%2Fnewpress%2Fwp-content%2Fuploads%2F2018%2F01%2Flucesforenses.jpg&imgrefurl=https%3A%2F%2Filuminet.com%2Fluz-ciencias-forenses%2F&docid=G9DqCrLo25eZpM&tbnid=v8BnQw7gK1z8PM&vet=12ahUKEwiUqIXUrtmNAxWTRzABHRM6DIwQM3oECGYQAA..i&w=805&h=456&hcb=2&ved=2ahUKEwiUqIXUrtmNAxWTRzABHRM6DIwQM3oECGYQAA"),
+                ["applications_xrays"] = () => (WaveData.Responses.Applications_XRays, WaveData.GetApplicationsSubMenu(), "https://www.google.com/imgres?q=Radio%20terapia&imgurl=https%3A%2F%2Fassets.neurosurgicalatlas.com%2Faaroncohen-gadol-com%2Fmeningioma-blog-8-fig-1.jpg&imgrefurl=https%3A%2F%2Fwww.aaroncohen-gadol.com%2Fes%2Fpacientes%2Fmeningioma-es%2Ftratamiento%2Fradioterapia&docid=0sDd4qvr32t6oM&tbnid=egrslVD1tCRzTM&vet=12ahUKEwiU4ej4rtmNAxV8VTABHW6qIOIQM3oECGEQAA..i&w=518&h=292&hcb=2&ved=2ahUKEwiU4ej4rtmNAxV8VTABHW6qIOIQM3oECGEQAA"),
+                ["applications_gamma"] = () => (WaveData.Responses.Applications_GammaRays, WaveData.GetApplicationsSubMenu(), "https://www.google.com/imgres?q=investigaci%C3%B3n%20nuclear&imgurl=https%3A%2F%2Frinconeducativo.org%2Fwp-content%2Fuploads%2F2023%2F07%2FReactores_Investigacion.jpeg&imgrefurl=https%3A%2F%2Frinconeducativo.org%2Fes%2Frecursos-educativos%2Fque-son-los-reactores-de-investigacion%2F&docid=c15qCTe0g0isqM&tbnid=av9TLIXsuIsFtM&vet=12ahUKEwiXzqjjr9mNAxWYK1kFHQBgN64QM3oECGUQAA..i&w=295&h=171&hcb=2&ved=2ahUKEwiXzqjjr9mNAxWYK1kFHQBgN64QM3oECGUQAA"),
 
                 // Polarización  
                 ["polarization_overview"] = () => (WaveData.Responses.Polarization_Overview, WaveData.GetPolarizationSubMenu(), null),
-                ["polarization_linear"] = () => (WaveData.Responses.Polarization_Linear, WaveData.GetPolarizationSubMenu(), "https://example.com/images/polarization_linear.jpg"),
-                ["polarization_circular"] = () => (WaveData.Responses.Polarization_Circular, WaveData.GetPolarizationSubMenu(), "https://example.com/images/polarization_circular.jpg"),
-                ["polarization_elliptical"] = () => (WaveData.Responses.Polarization_Elliptical, WaveData.GetPolarizationSubMenu(), "https://example.com/images/polarization_elliptical.jpg"),
+                ["polarization_linear"] = () => (WaveData.Responses.Polarization_Linear, WaveData.GetPolarizationSubMenu(), "https://www.iar.unlp.edu.ar/wp-content/uploads/2021/06/fig1b.png"),
+                ["polarization_circular"] = () => (WaveData.Responses.Polarization_Circular, WaveData.GetPolarizationSubMenu(), "http://hyperphysics.phy-astr.gsu.edu/hbasees/phyopt/imgpho/polcir.png"),
+                ["polarization_elliptical"] = () => (WaveData.Responses.Polarization_Elliptical, WaveData.GetPolarizationSubMenu(), "http://hyperphysics.phy-astr.gsu.edu/hbasees/phyopt/imgpho/polell.png"),
 
                 // Propagación  
                 ["propagation_overview"] = () => (WaveData.Responses.Propagation_Overview, WaveData.GetPropagationSubMenu(), null),
-                ["propagation_vacuum"] = () => (WaveData.Responses.Propagation_Vacuum, WaveData.GetPropagationSubMenu(), "https://example.com/images/propagation_vacuum.jpg"),
-                ["propagation_air"] = () => (WaveData.Responses.Propagation_Air, WaveData.GetPropagationSubMenu(), "https://example.com/images/propagation_air.jpg"),
-                ["propagation_materials"] = () => (WaveData.Responses.Propagation_Materials, WaveData.GetPropagationSubMenu(), "https://example.com/images/propagation_materials.jpg"),
-                ["propagation_phenomena"] = () => (WaveData.Responses.Propagation_Phenomena, WaveData.GetPropagationSubMenu(), "https://example.com/images/propagation_phenomena.jpg"),
+                ["propagation_vacuum"] = () => (WaveData.Responses.Propagation_Vacuum, WaveData.GetPropagationSubMenu(), null),
+                ["propagation_air"] = () => (WaveData.Responses.Propagation_Air, WaveData.GetPropagationSubMenu(), null),
+                ["propagation_materials"] = () => (WaveData.Responses.Propagation_Materials, WaveData.GetPropagationSubMenu(), null),
+                ["propagation_phenomena"] = () => (WaveData.Responses.Propagation_Phenomena, WaveData.GetPropagationSubMenu(), "https://thumbs.dreamstime.com/z/propiedades-de-dispersi%C3%B3n-y-refracci%C3%B3n-la-luz-diferencia-comparada-para-temas-educativos-actividad-onda-absorci%C3%B3n-espectro-191935745.jpg"),
 
                 // Espectro  
                 ["spectrum_overview"] = () => (WaveData.Responses.Spectrum_Overview, WaveData.GetSpectrumSubMenu(), null),
-                ["spectrum_radio"] = () => (WaveData.Responses.Spectrum_RadioWaves, WaveData.GetSpectrumSubMenu(), "https://example.com/images/spectrum_radio.jpg"),
-                ["spectrum_microwaves"] = () => (WaveData.Responses.Spectrum_Microwaves, WaveData.GetSpectrumSubMenu(), "https://example.com/images/spectrum_microwaves.jpg"),
-                ["spectrum_infrared"] = () => (WaveData.Responses.Spectrum_Infrared, WaveData.GetSpectrumSubMenu(), "https://example.com/images/spectrum_infrared.jpg"),
-                ["spectrum_visible"] = () => (WaveData.Responses.Spectrum_VisibleLight, WaveData.GetSpectrumSubMenu(), "https://example.com/images/spectrum_visible.jpg"),
-                ["spectrum_ultraviolet"] = () => (WaveData.Responses.Spectrum_Ultraviolet, WaveData.GetSpectrumSubMenu(), "https://example.com/images/spectrum_ultraviolet.jpg"),
-                ["spectrum_xrays"] = () => (WaveData.Responses.Spectrum_XRays, WaveData.GetSpectrumSubMenu(), "https://example.com/images/spectrum_xrays.jpg"),
-                ["spectrum_gamma"] = () => (WaveData.Responses.Spectrum_GammaRays, WaveData.GetSpectrumSubMenu(), "https://example.com/images/spectrum_gamma.jpg")
+                ["spectrum_radio"] = () => (WaveData.Responses.Spectrum_RadioWaves, WaveData.GetSpectrumSubMenu(), null),
+                ["spectrum_microwaves"] = () => (WaveData.Responses.Spectrum_Microwaves, WaveData.GetSpectrumSubMenu(), null),
+                ["spectrum_infrared"] = () => (WaveData.Responses.Spectrum_Infrared, WaveData.GetSpectrumSubMenu(), null),
+                ["spectrum_visible"] = () => (WaveData.Responses.Spectrum_VisibleLight, WaveData.GetSpectrumSubMenu(), null),
+                ["spectrum_ultraviolet"] = () => (WaveData.Responses.Spectrum_Ultraviolet, WaveData.GetSpectrumSubMenu(), null),
+                ["spectrum_xrays"] = () => (WaveData.Responses.Spectrum_XRays, WaveData.GetSpectrumSubMenu(), null),
+                ["spectrum_gamma"] = () => (WaveData.Responses.Spectrum_GammaRays, WaveData.GetSpectrumSubMenu(), null)
             };
         }
 
