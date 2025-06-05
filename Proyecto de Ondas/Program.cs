@@ -17,13 +17,11 @@ namespace Proyecto_de_Ondas
         {
             try
             {
-                // Verificar que el bot funciona
                 var me = await Bot.GetMeAsync();
                 Console.WriteLine($"Bot iniciado: @{me.Username}");
 
                 var cts = new CancellationTokenSource();
 
-                // Manejar Ctrl+C
                 Console.CancelKeyPress += (_, e) =>
                 {
                     e.Cancel = true;
@@ -85,52 +83,89 @@ namespace Proyecto_de_Ondas
 
             Console.WriteLine($"Mensaje recibido: {messageText}");
 
-            var (response, keyboard) = WaveService.ProcessCommand(messageText);
+            var (response, keyboard, imageUrl) = WaveService.ProcessCommand(messageText);
 
-            await botClient.SendTextMessageAsync(
-                chatId: chatId,
-                text: response,
-                parseMode: ParseMode.Markdown,
-                replyMarkup: keyboard,
-                cancellationToken: cancellationToken
-            );
+            if (imageUrl != null)
+            {
+                await botClient.SendPhotoAsync(
+                    chatId: chatId,
+                    photo: imageUrl, // URL directamente
+                    caption: response,
+                    parseMode: ParseMode.Markdown,
+                    replyMarkup: keyboard,
+                    cancellationToken: cancellationToken
+                );
+            }
+            else
+            {
+                await botClient.SendTextMessageAsync(
+                    chatId: chatId,
+                    text: response,
+                    parseMode: ParseMode.Markdown,
+                    replyMarkup: keyboard,
+                    cancellationToken: cancellationToken
+                );
+            }
         }
 
         private static async Task HandleCallbackQuery(ITelegramBotClient botClient, CallbackQuery callbackQuery, CancellationToken cancellationToken)
         {
             var chatId = callbackQuery.Message?.Chat.Id;
+            var messageId = callbackQuery.Message?.MessageId;
             var callbackData = callbackQuery.Data;
 
-            if (chatId == null) return;
+            if (chatId == null || messageId == null) return;
 
             Console.WriteLine($"Callback recibido: {callbackData}");
 
             try
             {
-                // Responder al callback query
                 await botClient.AnswerCallbackQueryAsync(callbackQuery.Id, cancellationToken: cancellationToken);
 
-                var (response, keyboard) = WaveService.ProcessCallbackQuery(callbackData);
+                var (response, keyboard, imageUrl) = WaveService.ProcessCallbackQuery(callbackData);
 
-                // Intentar editar el mensaje
+                // Eliminar el mensaje anterior para evitar que la imagen anterior persista
                 try
                 {
-                    await botClient.EditMessageTextAsync(
+                    await botClient.DeleteMessageAsync(
                         chatId: chatId,
-                        messageId: callbackQuery.Message.MessageId,
-                        text: response,
-                        parseMode: ParseMode.Markdown,
-                        replyMarkup: keyboard,
+                        messageId: (int)messageId,
                         cancellationToken: cancellationToken
                     );
                 }
-                catch (ApiRequestException ex) when (ex.Message.Contains("message is not modified"))
+                catch (Exception ex)
                 {
-                    // El mensaje es igual, no hacer nada
+                    Console.WriteLine($"Error al eliminar mensaje anterior: {ex.Message}");
                 }
-                catch
+
+                if (imageUrl != null)
                 {
-                    // Si no se puede editar, enviar nuevo mensaje
+                    try
+                    {
+                        Console.WriteLine($"Intentando enviar imagen desde URL: {imageUrl}");
+                        await botClient.SendPhotoAsync(
+                            chatId: chatId,
+                            photo: imageUrl,
+                            caption: response,
+                            parseMode: ParseMode.Markdown,
+                            replyMarkup: keyboard,
+                            cancellationToken: cancellationToken
+                        );
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al enviar imagen desde URL: {ex.Message}");
+                        await botClient.SendTextMessageAsync(
+                            chatId: chatId,
+                            text: response + "\n\n⚠️ *No se pudo cargar la imagen. Verifica que la URL sea válida y accesible.*",
+                            parseMode: ParseMode.Markdown,
+                            replyMarkup: keyboard,
+                            cancellationToken: cancellationToken
+                        );
+                    }
+                }
+                else
+                {
                     await botClient.SendTextMessageAsync(
                         chatId: chatId,
                         text: response,
